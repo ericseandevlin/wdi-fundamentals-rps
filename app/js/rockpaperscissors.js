@@ -40,8 +40,6 @@ function getWinner(playerMove,computerMove) {
     // Write code that will set winner to either 'player', 'computer', or 'tie' based on the values of playerMove and computerMove.
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
-
-    //I'm just using a swtich instead of if statements for fun.
    switch (playerMove = "rock") {
         case computerMove = "scissors":
             winner = "player";
@@ -80,7 +78,33 @@ function playToFive() {
     var playerWins = 0;
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
+    var tie = 0;
+    var playerMove;
+    var computerMove;
+    var winner;
+
+    while (playerWins < 5 || computerWins < 5) {
+        playerMove = getPlayerMove(move);
+        computerMove = getComputerMove(move);
+        winner = getWinner(playerMove, computerMove);
+
+        if (winner = "player") {
+            playerWins++;
+        } else if (winner = "computer") {
+            computerWins++;
+        } else { tie++;
+        }
+
+        console.log ("Player chose " + playerMove ", while Computer chose " + computerMove + ".");
+        console.log ("The score is currently: Player " + playerWins + ", Computer " + computerWins + ", Tie " + tie + ".");
+    }
     return [playerWins, computerWins];
 }
+
+
+
+
+
+
+
 
