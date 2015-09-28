@@ -25,14 +25,15 @@ function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    return move = move || getInput();
+    move = getInput();
+    return (move || getInput());
 }
 
 function getComputerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    return move = move || randomPlay();
+    return (move || randomPlay());
 }
 
 function getWinner(playerMove,computerMove) {
@@ -40,31 +41,31 @@ function getWinner(playerMove,computerMove) {
     // Write code that will set winner to either 'player', 'computer', or 'tie' based on the values of playerMove and computerMove.
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
-   switch (playerMove = "rock") {
-        case computerMove = "scissors":
+   switch (playerMove === "rock") {
+        case computerMove === "scissors":
             winner = "player";
             break;
-        case computerMove = "paper":
+        case computerMove === "paper":
             winner = "computer";
             break;
-        default;
+        default:
             winner = "tie";
    }
-      switch (playerMove = "paper") {
-        case computerMove = "rock":
+      switch (playerMove === "paper") {
+        case computerMove === "rock":
             winner = "player";
             break;
-        case computerMove = "scissors":
+        case computerMove === "scissors":
             winner = "computer";
             break;
-        default;
+        default:
             winner = "tie";
    }
-      switch (playerMove = "scissors") {
-        case computerMove = "paper":
+      switch (playerMove === "scissors") {
+        case computerMove === "paper":
             winner = "player";
             break;
-        case computerMove = "rock":
+        case computerMove === "rock":
             winner = "computer";
             break;
         default:
@@ -84,24 +85,51 @@ function playToFive() {
     var winner;
 
     while (playerWins < 5 || computerWins < 5) {
-        playerMove = getPlayerMove(move);
-        computerMove = getComputerMove(move);
+        playerMove = getPlayerMove();
+        computerMove = getComputerMove();
         winner = getWinner(playerMove, computerMove);
 
-        if (winner = "player") {
+        if (winner === "player") {
             playerWins++;
-        } else if (winner = "computer") {
+        } else if (winner === "computer") {
             computerWins++;
         } else { tie++;
         }
 
-        console.log ("Player chose " + playerMove ", while Computer chose " + computerMove + ".");
+        console.log ("Player chose " + playerMove + " while Computer chose " + computerMove + ".");
         console.log ("The score is currently: Player " + playerWins + ", Computer " + computerWins + ", Tie " + tie + ".");
     }
     return [playerWins, computerWins];
 }
 
+function playTo(x) {
+        console.log("Let's play Rock, Paper, Scissors");
+    var playerWins = 0;
+    var computerWins = 0;
+    var tie = 0;
+    var playerMove;
+    var computerMove;
+    var winner;
 
+    while (playerWins < x || computerWins < x) {
+        playerMove = getPlayerMove();
+        computerMove = getComputerMove();
+        winner = getWinner(playerMove, computerMove);
+
+        if (winner === "player") {
+            playerWins++;
+        } else if (winner === "computer") {
+            computerWins++;
+        } else { tie++;
+        }
+
+        console.log ("Player chose " + playerMove + ", while Computer chose " + computerMove + ".");
+        console.log ("The score is currently: Player " + playerWins + ", Computer " + computerWins + ", Tie " + tie + ".");
+    }
+    return [playerWins, computerWins];
+}
+
+playTo(3);
 
 
 
